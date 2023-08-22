@@ -60,7 +60,7 @@ class CalendarHeader extends StatelessWidget {
           child: DefaultTextStyle(
               style: getTextStyle,
               child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     showHeaderButtons ? _leftButton() : Container(),
                     isTitleTouchable
