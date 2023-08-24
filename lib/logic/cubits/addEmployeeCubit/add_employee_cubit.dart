@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-enum AddEmployeeState {initial}
+enum AddEmployeeState {initial, refresh}
 
 class AddEmployeeCubit extends Cubit<AddEmployeeState> {
   AddEmployeeCubit() : super(AddEmployeeState.initial);

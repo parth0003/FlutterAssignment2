@@ -44,13 +44,16 @@ Widget addEmployeeForm(BuildContext context) {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 1.3.h,),
+              SizedBox(
+                height: 1.3.h,
+              ),
+
               ///Employee Name
               Container(
                 padding: EdgeInsets.zero,
                 margin: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.3.h),
-                decoration: BoxDecoration(
-                    border: Border.all(color: ColorConstant.borderColor, width: 0.3.w), borderRadius: BorderRadius.circular(2.w)),
+                decoration:
+                    BoxDecoration(border: Border.all(color: ColorConstant.borderColor, width: 0.3.w), borderRadius: BorderRadius.circular(2.w)),
                 child: TextFormField(
                     controller: context.read<AddEmployeeCubit>().employeeNameController,
                     style: TextStyle(
@@ -90,17 +93,18 @@ Widget addEmployeeForm(BuildContext context) {
                     ),
                     textAlignVertical: TextAlignVertical.center),
               ),
+
               ///Employee Role
               GestureDetector(
                 onTap: () {
-
+                  selectEmployeeRole(context);
                 },
                 behavior: HitTestBehavior.translucent,
                 child: Container(
                   padding: EdgeInsets.zero,
                   margin: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.3.h),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: ColorConstant.borderColor, width: 0.3.w), borderRadius: BorderRadius.circular(2.w)),
+                  decoration:
+                      BoxDecoration(border: Border.all(color: ColorConstant.borderColor, width: 0.3.w), borderRadius: BorderRadius.circular(2.w)),
                   child: TextFormField(
                       controller: context.read<AddEmployeeCubit>().employeeRoleController,
                       enabled: false,
@@ -150,6 +154,7 @@ Widget addEmployeeForm(BuildContext context) {
                       textAlignVertical: TextAlignVertical.center),
                 ),
               ),
+
               ///Date Widget
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.3.h),
@@ -157,9 +162,7 @@ Widget addEmployeeForm(BuildContext context) {
                   children: [
                     Expanded(
                       child: GestureDetector(
-                        onTap: () {
-
-                        },
+                        onTap: () {},
                         behavior: HitTestBehavior.translucent,
                         child: Container(
                           padding: EdgeInsets.zero,
@@ -209,13 +212,14 @@ Widget addEmployeeForm(BuildContext context) {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 2.w),
-                      child: Image.asset(ImageConstant.backIcon, width: 6.w,),
+                      child: Image.asset(
+                        ImageConstant.backIcon,
+                        width: 6.w,
+                      ),
                     ),
                     Expanded(
                       child: GestureDetector(
-                        onTap: () {
-
-                        },
+                        onTap: () {},
                         behavior: HitTestBehavior.translucent,
                         child: Container(
                           padding: EdgeInsets.zero,
@@ -309,5 +313,44 @@ Widget addEmployeeForm(BuildContext context) {
         ),
       ),
     ],
+  );
+}
+
+selectEmployeeRole(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        width: double.infinity,
+        height: 30.h,
+        decoration: BoxDecoration(
+          color: ColorConstant.whiteColor,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(3.w),
+            topRight: Radius.circular(3.w),
+          ),
+        ),
+        child: BlocProvider(
+          create: (context) => AddEmployeeCubit(),
+          child: BlocBuilder<AddEmployeeCubit, AddEmployeeState>(
+            builder: (context, state) {
+              return Column(
+                children: [
+                  ListTile(
+                    title: Center(
+                      child: textWidget("Product Designer", ColorConstant.textColor, 12.sp, FontWeight.w400),
+                    ),
+                    onTap: () {
+                      context.read<AddEmployeeCubit>().employeeRoleController.text = "Product Designer";
+                      AutoRouter.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+      );
+    },
   );
 }
