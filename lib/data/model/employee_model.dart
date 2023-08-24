@@ -1,7 +1,7 @@
 class EmployeeModel {
   int? id;
   String? employeeName, employeeRole;
-  DateTime? startDate, endDate;
+  int? startDate, endDate;
 
   EmployeeModel({this.id, this.employeeName, this.employeeRole, this.startDate, this.endDate});
 

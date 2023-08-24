@@ -9,5 +9,6 @@ class ColorConstant {
   static Color dividerColor = const Color.fromRGBO(242, 242, 242, 1);
   static Color hintColor = const Color.fromRGBO(148, 156, 158, 1);
   static Color borderColor = const Color.fromRGBO(229, 229, 229, 1);
+  static Color backgroundColor = const Color.fromRGBO(236, 236, 236, 0.8);
 
 }

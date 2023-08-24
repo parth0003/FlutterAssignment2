@@ -8,4 +8,5 @@ class ImageConstant {
   static const String roleIcon = "${imagePath}role_icon.png";
   static const String downArrowIcon = "${imagePath}down_arrow_icon.png";
   static const String backIcon = "${imagePath}back_icon.png";
+  static const String deleteIcon = "${imagePath}delete_icon.png";
 }

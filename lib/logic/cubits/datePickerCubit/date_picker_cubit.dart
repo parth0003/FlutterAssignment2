@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-enum DatePickerState { today, nextMonday, nextTuesday, afterWeek, custom, dateChange }
+enum DatePickerState { today, nextMonday, nextTuesday, afterWeek, noDate, custom, dateChange }
 
 class DatePickerCubit extends Cubit<DatePickerState> {
   DatePickerCubit() : super(DatePickerState.today);
@@ -34,6 +34,9 @@ class DatePickerCubit extends Cubit<DatePickerState> {
         selectedDate = DateTime.now().add(const Duration(days: 7));
         break;
 
+      case DatePickerState.noDate:
+        break;
+
       case DatePickerState.custom:
         break;
 
@@ -44,6 +47,8 @@ class DatePickerCubit extends Cubit<DatePickerState> {
   }
 
   void selectToday() => emit(DatePickerState.today);
+
+  void selectNoDate() => emit(DatePickerState.noDate);
 
   void selectNextMonday() => emit(DatePickerState.nextMonday);
 
